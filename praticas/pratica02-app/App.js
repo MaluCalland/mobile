@@ -1,6 +1,21 @@
 import React, { Component } from 'react';
 import { View, Text, FlatList, Image, StyleSheet } from 'react-native';
 
+class Menu extends Component{
+  render(){
+    let imgPrincipal = 'https://www.viajanet.com.br/blog/wp-content/uploads/2018/08/foto-que-fica-embaixo-da-linha-fina.jpg'
+
+    return(
+      <View>
+        <Image 
+          source={{uri: imgPrincipal}}
+          style={{width: this.props.largura, height: this.props.altura}}
+        />
+      </View>
+    )
+  }
+}
+
 const lugares = [
   {
     id: '1',
@@ -40,21 +55,6 @@ const lugares = [
   },
 ];
 
-class Menu extends Component{
-  render(){
-    let imgPrincipal = 'https://www.viajanet.com.br/blog/wp-content/uploads/2018/08/foto-que-fica-embaixo-da-linha-fina.jpg'
-
-    return(
-      <View>
-        <Image 
-          source={{uri: imgPrincipal}}
-          style={{width: this.props.largura, height: this.props.altura}}
-        />
-      </View>
-    )
-  }
-}
-
 const App = () => {
   return (
     <View style={estilos.fundo }>
@@ -62,7 +62,7 @@ const App = () => {
         largura='100%' altura={200}
       />
       <Text style={estilos.titulo}>PLANEJE SUA VIAGEM</Text>
-      <Text style={estilos.texto}>Lugares Famosos do Brasil para você aproveitar!</Text>
+      <Text style={estilos.texto}>Lugares famosos do Brasil para você aproveitar!</Text>
       <FlatList
         data={lugares}
         keyExtractor={(item) => item.id}
@@ -98,7 +98,7 @@ const estilos = StyleSheet.create({
   },
   nav: {
     backgroundColor: 'white',
-    borderRadius: 10,
+    boxShadow: '0px 0px 2px rgba(0, 0, 0, 0.5)', 
     padding: 15,
     marginBottom: 15,
     flexDirection: 'row',

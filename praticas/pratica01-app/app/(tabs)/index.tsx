@@ -14,7 +14,7 @@ export default function HomeScreen() {
         />
       }>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title" style={styles.customTextTitulo}>OBJETO</ThemedText>
+        <ThemedText type="title" style={styles.customTextTitulo}>Objeto</ThemedText>
       </ThemedView>
 
           <ThemedView style={styles.fundoImagens}>
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: 'auto',
     padding: 20,
-    boxShadow: '0px 0px 2px rgba(0, 0, 0, 0.3)', /*sombra*/
+    boxShadow: '0px 0px 2px rgba(0, 0, 0, 0.3)', 
   },
   stepContainer: {
     gap: 8,
@@ -73,14 +73,14 @@ const styles = StyleSheet.create({
     boxShadow: '0px 0px 5px rgba(0, 0, 0, 0.3)',
     borderRadius: 10,
     height: 'auto',
-    width: '100%', /* Largura 100% do contêiner pai */
-    maxWidth: 350, /* Limita o tamanho da imagem*/
+    width: '100%', 
+    maxWidth: 350, 
   },
   imagens: {
     width: '100%',
     height: 'auto', 
-    aspectRatio: 2, /* Manter a proporção da imagem */
-    maxWidth: 350, /* Limita o tamanho da imagem*/
+    aspectRatio: 2,
+    maxWidth: 350, 
     borderRadius: 10,
   },
 });

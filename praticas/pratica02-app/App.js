@@ -67,7 +67,7 @@ const App = () => {
         data={lugares}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <View style={estilos.card}>
+          <View style={estilos.nav}>
             <Image source={{ uri: item.foto }} style={estilos.foto} />
             <View style={estilos.textContainer}>
               <Text style={estilos.nome}>{item.nome}</Text>
@@ -96,7 +96,7 @@ const estilos = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
   },
-  card: {
+  nav: {
     backgroundColor: 'white',
     borderRadius: 10,
     padding: 15,

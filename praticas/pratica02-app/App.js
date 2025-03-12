@@ -69,7 +69,7 @@ const App = () => {
         renderItem={({ item }) => (
           <View style={estilos.nav}>
             <Image source={{ uri: item.foto }} style={estilos.foto} />
-            <View style={estilos.textContainer}>
+            <View style={estilos.textoInfo}>
               <Text style={estilos.nome}>{item.nome}</Text>
               <Text style={estilos.sobre}>{item.sobre}</Text>
             </View>
@@ -95,6 +95,7 @@ const estilos = StyleSheet.create({
   texto: {
     fontSize: 20,
     textAlign: 'center',
+    marginBottom: 10
   },
   nav: {
     backgroundColor: 'white',
@@ -104,14 +105,14 @@ const estilos = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
+  textoInfo: {
+    flex: 1,
+  },
   foto: {
     width: 120,
     height: 120,
     borderRadius: 8,
     marginRight: 15,
-  },
-  textContainer: {
-    flex: 1,
   },
   nome: {
     fontSize: 18,

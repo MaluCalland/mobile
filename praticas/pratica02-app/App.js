@@ -121,7 +121,8 @@ const estilos = StyleSheet.create({
   },
   sobre: {
     fontSize: 14,
-    color: '#555',
+    textAlign: 'justify', 
+    color: '#5c5858',
     padding: 5
   },
 });

@@ -149,7 +149,7 @@ class App extends Component {
                   style={estilos.botao}
                   onPress={() => this.clicar(<PrimeiroLugar />)}
                 >
-                  <Text style={estilos.botao}>Conheça mais sobre {item.botaoNome}</Text>
+                  <Text style={estilos.botao}> Conheça mais sobre {item.botaoNome}</Text>
                 </TouchableOpacity>
               </View>
             </View>

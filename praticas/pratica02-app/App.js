@@ -4,7 +4,6 @@ import { View, Text, FlatList, Image, StyleSheet } from 'react-native';
 class Menu extends Component{
   render(){
     let imgPrincipal = 'https://www.viajanet.com.br/blog/wp-content/uploads/2018/08/foto-que-fica-embaixo-da-linha-fina.jpg'
-
     return(
       <View>
         <Image 

@@ -1,7 +1,8 @@
 import React, { Component} from 'react';
-import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity, ScrollView , TextInput} from 'react-native';
+import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity, ScrollView , TextInput, Switch} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { Button, Picker } from 'react-native-web';
 
 const Stack = createStackNavigator();
 
@@ -23,11 +24,19 @@ class DestinoViagemInput extends Component {
   constructor(props) {
       super(props);
       this.state = {
+        status: false,
         nome: '',
-        local: '',
+        local: 0,
+        locais: [
+          {key: 1, nome: 'Ceará'},        
+          {key: 1, nome: 'Pará'},        
+          {key: 1, nome: 'Rio Grande do Norte'},        
+          {key: 1, nome: 'Rio de Janeiro'},        
+          {key: 1, nome: 'Alagoas'},        
+        ],
         dataIda: '',
         dataVolta: '',
-        input: ''
+        input: '',
       };
       this.entradaNome = this.entradaNome.bind(this);
       this.inserirLocal = this.inserirLocal.bind(this)
@@ -68,8 +77,13 @@ inserirDataVolta(inserirDataVolta){
 }
 
   render() {
+
+    let locaisItem = this.state.locais.map( (v, k) => {
+      return <Picker.Item key={k} value={k} label={v.nome}/>
+    })
+
     return(
-      <View style={estilos.containerInput}>
+      <View style={estilos.fundo}>
         <ScrollView>
           <TextInput
           style={estilos.input}
@@ -99,6 +113,27 @@ inserirDataVolta(inserirDataVolta){
         <Text>{this.state.local}</Text>
         <Text>{this.state.dataIda}</Text>
         <Text>{this.state.dataVolta}</Text>
+
+        <Picker
+            selectedValue = {this.state.local}
+            onValueChange = {(itemValue, itemIndex) => this.setState({local: itemValue})}>
+            {locaisItem}
+        </Picker>
+
+        <Switch
+        value={this.state.status}
+        onValueChange={(valorSwitch) => this.setState({status: valorSwitch})}
+        thumbColor="red"
+        />
+
+        <Text style={{textAlign: 'center', fontSize: 40}}>
+          {(this.state.status) ? "Ativo" : "Inativo"}
+        </Text>
+
+        <Button
+        onPress={() => this.props.navigation.navigate('Início')}
+        title='Conheça nosso app'
+        /> 
         </ScrollView>
       </View>
     );
@@ -195,7 +230,6 @@ class Inicio extends Component {
           <Menu largura="100%" altura={200} />
           <Text style={estilos.titulo}>PLANEJE SUA VIAGEM</Text>
           <Text style={estilos.texto}>Lugares famosos do Brasil para você aproveitar!</Text>
-          <DestinoViagemInput/>
         <FlatList
           data={lugares}
           keyExtractor={(item) => item.id}
@@ -255,6 +289,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: true }}>
+        <Stack.Screen name="Bem-vindo" component={DestinoViagemInput} />
         <Stack.Screen name="Início" component={Inicio} />
         <Stack.Screen name="Detalhes" component={LugarDetalhes} />
       </Stack.Navigator>
@@ -326,5 +361,10 @@ const estilos = StyleSheet.create({
     borderRadius: 4,
     paddingLeft: 10,
     marginTop: 10,
+  },
+  pizzas: {
+    marginTop: 20,
+    fontSize: 20,
+    textAlign: 'center'
   },
 });

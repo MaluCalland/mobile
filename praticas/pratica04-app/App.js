@@ -1,8 +1,9 @@
-import React, { Component} from 'react';
-import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity, ScrollView , TextInput, Switch} from 'react-native';
+import React, { Component, useState} from 'react';
+import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity, ScrollView , TextInput, Switch, Button} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Button, Picker } from 'react-native-web';
+import {Picker} from '@react-native-picker/picker';
+import {Slider} from '@react-native-community/slider'
 
 const Stack = createStackNavigator();
 
@@ -20,13 +21,58 @@ class Menu extends Component{
   }
 }
 
-class DestinoViagemInput extends Component {
+// const AplicandoSlider = () => {
+//   const [sliderValue1, setSliderValue1] = useState(50);
+//   const [sliderValue2, setSliderValue2] = useState(30);
+
+//   return (
+//     <View style={estilos.fundo}>
+//       <ScrollView>
+//         <View style={styles.sliderContainer}>
+//           <Text>Nível de conhecimento: {sliderValue1}%</Text>
+//           <Slider
+//             style={styles.slider}
+//             minimumValue={0}
+//             maximumValue={100}
+//             step={5}
+//             value={sliderValue1}
+//             onValueChange={setSliderValue1}
+//             minimumTrackTintColor="#007bff"
+//             maximumTrackTintColor="#d3d3d3"
+//             thumbTintColor="#007bff"
+//           />
+//         </View>
+
+//         <View style={styles.sliderContainer}>
+//           <Text>Nível de adoção: {sliderValue2}%</Text>
+//           <Slider
+//             style={styles.slider}
+//             minimumValue={0}
+//             maximumValue={100}
+//             step={5}
+//             value={sliderValue2}
+//             onValueChange={setSliderValue2}
+//             minimumTrackTintColor="#007bff"
+//             maximumTrackTintColor="#d3d3d3"
+//             thumbTintColor="#007bff"
+//           />
+//         </View>
+//       </ScrollView>
+//     </View>
+//   );
+// };
+
+class Entrar extends Component {
   constructor(props) {
       super(props);
       this.state = {
         status: false,
+        status2: false,
         nome: '',
-        local: 0,
+        cpf: '',
+        email: '',
+        telefone: '',
+        local: '',
         locais: [
           {key: 1, nome: 'Ceará'},        
           {key: 1, nome: 'Pará'},        
@@ -35,46 +81,36 @@ class DestinoViagemInput extends Component {
           {key: 1, nome: 'Alagoas'},        
         ],
         dataIda: '',
+        datasIda: [
+          {key: 1, diaIda: 1},  {key: 1, diaIda: 2}, {key: 1, diaIda: 3}, {key: 1, diaIda: 4}, {key: 1, diaIda:  5}, {key: 1, diaIda: 6}, {key: 1, diaIda: 7}, {key: 1, diaIda:8}, {key: 1, diaIda: 9}, {key: 1, diaIda: 10}, {key: 1, diaIda: 11}, {key: 1, diaIda: 12}, {key: 1, diaIda: 13}, {key: 1, diaIda: 14}, {key: 1, diaIda: 15}, {key: 1, diaIda: 16}, {key: 1, diaIda: 17}, {key: 1, diaIda: 18}, {key: 1, diaIda: 19}, {key: 1, diaIda: 20}, {key: 1, diaIda: 21}, {key: 1, diaIda: 22}, {key: 1, diaIda: 23}, {key: 1, diaIda: 24}, {key: 1, diaIda: 25}, {key: 1, diaIda: 26}, {key: 1, diaIda: 27}, {key: 1, diaIda: 28}, {key: 1, diaIda: 29}, {key: 1, diaIda: 30}, {key: 1, diaIda: 31}       
+        ],
         dataVolta: '',
+        datasVolta: [
+          {key: 1, diaVolta: 1}, {key: 1, diaVolta: 2}, {key: 1, diaVolta: 3}, {key: 1, diaVolta: 4}, {key: 1, diaVolta: 5}, {key: 1, diaVolta: 6}, {key: 1, diaVolta: 7}, {key: 1, diaVolta: 8}, {key: 1, diaVolta: 9},{key: 1, diaVolta: 10}, {key: 1, diaVolta: 11},{key: 1, diaVolta: 12},{key: 1, diaVolta: 13},{key: 1, diaVolta: 14}, {key: 1, diaVolta: 15}, {key: 1, diaVolta: 16}, {key: 1, diaVolta: 17}, {key: 1, diaVolta: 18}, {key: 1, diaVolta: 19}, {key: 1, diaVolta: 20}, {key: 1, diaVolta: 21}, {key: 1, diaVolta: 22}, {key: 1, diaVolta: 23}, {key: 1, diaVolta: 24}, {key: 1, diaVolta: 25}, {key: 1, diaVolta: 26}, {key: 1, diaVolta: 27}, {key: 1, diaVolta: 28}, {key: 1, diaVolta: 29}, {key: 1, diaVolta: 30}, {key: 1, diaVolta: 31}
+        ],
         input: '',
       };
       this.entradaNome = this.entradaNome.bind(this);
-      this.inserirLocal = this.inserirLocal.bind(this)
-      this.inserirDataIda = this.inserirDataIda.bind(this)
-      this.inserirDataVolta = this.inserirDataVolta.bind(this)
+      this.entradaCpf = this.entradaCpf.bind(this)
+      this.entradaEmail = this.entradaEmail.bind(this)
+      this.entradaTelefone = this.entradaTelefone.bind(this)
   }
 
-  entradaNome(texto) {
-      if(texto.length > 0) {
-        this.setState({nome: texto + ', obrigada por acessar nosso App!'});
-      } else {
-        this.setState({nome: ''})
-      }
-  }
+  entradaNome = (texto) => {
+    this.setState({ nome: texto });
+  };
 
-  inserirLocal(textoLocal){
-    if(textoLocal.length > 0) {
-      this.setState({local: 'Destino escolhido: ' + textoLocal});
-    } else {
-      this.setState({local: ''})
-    }
-}
+  entradaCpf = (texto) => {
+    this.setState({ cpf: texto });
+  };
 
-inserirDataIda(inserirDataIda){
-  if(inserirDataIda.length > 0) {
-    this.setState({dataIda: 'Ida ' + inserirDataIda});
-  } else {
-    this.setState({dataIda: ''})
-  }
-}
+  entradaEmail = (texto) => {
+    this.setState({ email: texto });
+  };
 
-inserirDataVolta(inserirDataVolta){
-  if(inserirDataVolta.length > 0) {
-    this.setState({dataVolta: 'Volta ' + inserirDataVolta});
-  } else {
-    this.setState({dataVolta: ''})
-  }
-}
+  entradaTelefone = (texto) => {
+    this.setState({ telefone: texto });
+  };
 
   render() {
 
@@ -82,58 +118,89 @@ inserirDataVolta(inserirDataVolta){
       return <Picker.Item key={k} value={k} label={v.nome}/>
     })
 
+    let dataIda = this.state.datasIda.map( (v, k) => {
+      return <Picker.Item key={k} value={k} label={v.diaIda}/>
+    })
+
+    let dataVolta = this.state.datasVolta.map( (v, k) => {
+      return <Picker.Item key={k} value={k} label={v.diaVolta}/>
+    })
+
     return(
       <View style={estilos.fundo}>
         <ScrollView>
-          <TextInput
-          style={estilos.input}
-          placeholder="Digite seu nome "
-          underlineColorAndroid="transparent"
-          onChangeText={this.entradaNome}
-          />
-          <TextInput
-          style={estilos.input}
-          placeholder="Digite seu destino "
-          underlineColorAndroid="transparent"
-          onChangeText={this.inserirLocal}
-          />
-          <TextInput
-          style={estilos.input}
-          placeholder="Digite o dia de ida "
-          underlineColorAndroid="transparent"
-          onChangeText={this.inserirDataIda}
-          />      
-          <TextInput
-          style={estilos.input}
-          placeholder="Digite o dia de volta "
-          underlineColorAndroid="transparent"
-          onChangeText={this.inserirDataVolta}
-          />      
-        <Text>{this.state.nome}</Text>
-        <Text>{this.state.local}</Text>
-        <Text>{this.state.dataIda}</Text>
-        <Text>{this.state.dataVolta}</Text>
+          <View style={estilos.containerPrincipal}>
+            <Text style={{fontSize: 30, color: '#87CEFA', textAlign: 'center', padding:20, fontWeight: 'bold'}}>Viagem360</Text>
+            <TextInput 
+              style={estilos.input}
+              placeholder="Digite seu nome"
+              underlineColorAndroid="transparent"
+              onChangeText={this.entradaNome}
+            />
+            <TextInput
+              style={estilos.input}
+              placeholder="Digite seu CPF"
+              underlineColorAndroid="transparent"
+              onChangeText={this.entradaCpf}
+            />
+            <TextInput
+              style={estilos.input}
+              placeholder="Digite seu email"
+              underlineColorAndroid="transparent"
+              onChangeText={this.entradaEmail}
+            />
+            <TextInput
+              style={estilos.input}
+              placeholder="Digite seu telefone"
+              underlineColorAndroid="transparent"
+              onChangeText={this.entradaTelefone}
+            />
+            <View style={estilos.resultadoContainerFundo}>
+              <Text style={estilos.textoResultado}>Nome: {this.state.nome}</Text>
+              <Text style={estilos.textoResultado}>CPF: {this.state.cpf}</Text>
+              <Text style={estilos.textoResultado}>Email: {this.state.email}</Text>
+              <Text style={estilos.textoResultado}>Telefone: {this.state.telefone}</Text>
+            </View>
 
-        <Picker
-            selectedValue = {this.state.local}
-            onValueChange = {(itemValue, itemIndex) => this.setState({local: itemValue})}>
-            {locaisItem}
-        </Picker>
+            <Text style={{fontSize: 18, marginTop:25, fontWeight: 'bold'}}>Escolha seu destino:</Text>
+              <Picker
+                  style={estilos.resultadoContainerFundo}
+                  selectedValue = {this.state.local}
+                  onValueChange = {(itemValue, itemIndex) => this.setState({local: itemValue})}>
+                  {locaisItem}
+              </Picker>
+            <Text style={{fontSize: 18, marginTop:25, fontWeight: 'bold'}}>Escolha dia de ida:</Text>
+              <Picker
+                style={estilos.resultadoContainerFundo}
+                selectedValue = {this.state.dataIda}
+                  onValueChange = {(itemValue, itemIndex) => this.setState({diaIda: itemValue})}>
+                  {dataIda}
+              </Picker>
+            <Text style={{fontSize: 18, marginTop:25, fontWeight: 'bold'}}>Escolha dia de volta:</Text>
+              <Picker
+                style={estilos.resultadoContainerFundo}
+                selectedValue = {this.state.dataVolta}
+                  onValueChange = {(itemValue, itemIndex) => this.setState({diaVolta: itemValue})}>
+                  {dataVolta}
+              </Picker>
 
-        <Switch
-        value={this.state.status}
-        onValueChange={(valorSwitch) => this.setState({status: valorSwitch})}
-        thumbColor="red"
-        />
+              <Switch
+                value={this.state.status}
+                onValueChange={(valorSwitch) => this.setState({status: valorSwitch})}
+                thumbColor="#87CEFA"
+              ></Switch>
+              <Switch
+                value={this.state.status2}
+                onValueChange={(valorSwitch2) => this.setState({status2: valorSwitch2})}
+                thumbColor="#87CEFA"
+              ></Switch>
 
-        <Text style={{textAlign: 'center', fontSize: 40}}>
-          {(this.state.status) ? "Ativo" : "Inativo"}
-        </Text>
-
-        <Button
-        onPress={() => this.props.navigation.navigate('Início')}
-        title='Conheça nosso app'
-        /> 
+              <Button
+                onPress={() => this.props.navigation.navigate('Início')}
+                title='Conheça nosso app'
+                style={estilos.botao}
+              /> 
+          </View>
         </ScrollView>
       </View>
     );
@@ -289,7 +356,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: true }}>
-        <Stack.Screen name="Bem-vindo" component={DestinoViagemInput} />
+        <Stack.Screen name="Bem-vindo" component={Entrar} />
         <Stack.Screen name="Início" component={Inicio} />
         <Stack.Screen name="Detalhes" component={LugarDetalhes} />
       </Stack.Navigator>
@@ -345,26 +412,35 @@ const estilos = StyleSheet.create({
     color: '#555',
     textAlign: 'justify'
   },
-  botao: {
-    padding:5,
-    backgroundColor: 'white',
-    borderRadius: 8,      
-    boxShadow: '0px 0px 2px rgba(0, 0, 0, 0.5)',
-  },
   container: {
     margin: 20,
   },
+  containerPrincipal: {
+    flex: 1,
+    padding: 20,
+   },
   input: {
     height: 40,
-    borderColor: '#ccc',
+    borderColor: 'gray',
     borderWidth: 1,
-    borderRadius: 4,
-    paddingLeft: 10,
-    marginTop: 10,
+    marginBottom: 10,
+    paddingHorizontal: 10,
+    borderRadius: 5,
+    backgroundColor: '#f0f0f0',
   },
-  pizzas: {
+  resultadoContainerFundo: {
     marginTop: 20,
-    fontSize: 20,
-    textAlign: 'center'
+    padding: 15,
+    backgroundColor: '#f0f0f0',
+    borderRadius: 8,
+  },
+  textoResultado: {
+    fontSize: 16,
+    marginBottom: 5,
+  },
+  container: {
+    flex: 1,
+    padding: 20,
+    backgroundColor: '#f0f0f0',
   },
 });

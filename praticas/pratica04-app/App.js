@@ -3,7 +3,7 @@ import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity, ScrollView ,
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import {Picker} from '@react-native-picker/picker';
-import {Slider} from '@react-native-community/slider'
+import Slider from '@react-native-community/slider'
 
 const Stack = createStackNavigator();
 
@@ -21,53 +21,14 @@ class Menu extends Component{
   }
 }
 
-// const AplicandoSlider = () => {
-//   const [sliderValue1, setSliderValue1] = useState(50);
-//   const [sliderValue2, setSliderValue2] = useState(30);
-
-//   return (
-//     <View style={estilos.fundo}>
-//       <ScrollView>
-//         <View style={styles.sliderContainer}>
-//           <Text>Nível de conhecimento: {sliderValue1}%</Text>
-//           <Slider
-//             style={styles.slider}
-//             minimumValue={0}
-//             maximumValue={100}
-//             step={5}
-//             value={sliderValue1}
-//             onValueChange={setSliderValue1}
-//             minimumTrackTintColor="#007bff"
-//             maximumTrackTintColor="#d3d3d3"
-//             thumbTintColor="#007bff"
-//           />
-//         </View>
-
-//         <View style={styles.sliderContainer}>
-//           <Text>Nível de adoção: {sliderValue2}%</Text>
-//           <Slider
-//             style={styles.slider}
-//             minimumValue={0}
-//             maximumValue={100}
-//             step={5}
-//             value={sliderValue2}
-//             onValueChange={setSliderValue2}
-//             minimumTrackTintColor="#007bff"
-//             maximumTrackTintColor="#d3d3d3"
-//             thumbTintColor="#007bff"
-//           />
-//         </View>
-//       </ScrollView>
-//     </View>
-//   );
-// };
-
 class Entrar extends Component {
   constructor(props) {
       super(props);
       this.state = {
-        status: false,
-        status2: false,
+        state: {
+          notificacao: false,  
+          mensagem: false,          
+        },
         nome: '',
         cpf: '',
         email: '',
@@ -82,13 +43,15 @@ class Entrar extends Component {
         ],
         dataIda: '',
         datasIda: [
-          {key: 1, diaIda: 1},  {key: 1, diaIda: 2}, {key: 1, diaIda: 3}, {key: 1, diaIda: 4}, {key: 1, diaIda:  5}, {key: 1, diaIda: 6}, {key: 1, diaIda: 7}, {key: 1, diaIda:8}, {key: 1, diaIda: 9}, {key: 1, diaIda: 10}, {key: 1, diaIda: 11}, {key: 1, diaIda: 12}, {key: 1, diaIda: 13}, {key: 1, diaIda: 14}, {key: 1, diaIda: 15}, {key: 1, diaIda: 16}, {key: 1, diaIda: 17}, {key: 1, diaIda: 18}, {key: 1, diaIda: 19}, {key: 1, diaIda: 20}, {key: 1, diaIda: 21}, {key: 1, diaIda: 22}, {key: 1, diaIda: 23}, {key: 1, diaIda: 24}, {key: 1, diaIda: 25}, {key: 1, diaIda: 26}, {key: 1, diaIda: 27}, {key: 1, diaIda: 28}, {key: 1, diaIda: 29}, {key: 1, diaIda: 30}, {key: 1, diaIda: 31}       
+          {key: 1, diaIda: 1},  {key: 1, diaIda: 2}, {key: 1, diaIda: 3}, {key: 1, diaIda: 4}, {key: 1, diaIda: 5}, {key: 1, diaIda: 6}, {key: 1, diaIda: 7}, {key: 1, diaIda: 8}, {key: 1, diaIda: 9}, {key: 1, diaIda: 10}, {key: 1, diaIda: 11}, {key: 1, diaIda: 12}, {key: 1, diaIda: 13}, {key: 1, diaIda: 14}, {key: 1, diaIda: 15}, {key: 1, diaIda: 16}, {key: 1, diaIda: 17}, {key: 1, diaIda: 18}, {key: 1, diaIda: 19}, {key: 1, diaIda: 20}, {key: 1, diaIda: 21}, {key: 1, diaIda: 22}, {key: 1, diaIda: 23}, {key: 1, diaIda: 24}, {key: 1, diaIda: 25}, {key: 1, diaIda: 26}, {key: 1, diaIda: 27}, {key: 1, diaIda: 28}, {key: 1, diaIda: 29}, {key: 1, diaIda: 30}, {key: 1, diaIda: 31}       
         ],
         dataVolta: '',
         datasVolta: [
           {key: 1, diaVolta: 1}, {key: 1, diaVolta: 2}, {key: 1, diaVolta: 3}, {key: 1, diaVolta: 4}, {key: 1, diaVolta: 5}, {key: 1, diaVolta: 6}, {key: 1, diaVolta: 7}, {key: 1, diaVolta: 8}, {key: 1, diaVolta: 9},{key: 1, diaVolta: 10}, {key: 1, diaVolta: 11},{key: 1, diaVolta: 12},{key: 1, diaVolta: 13},{key: 1, diaVolta: 14}, {key: 1, diaVolta: 15}, {key: 1, diaVolta: 16}, {key: 1, diaVolta: 17}, {key: 1, diaVolta: 18}, {key: 1, diaVolta: 19}, {key: 1, diaVolta: 20}, {key: 1, diaVolta: 21}, {key: 1, diaVolta: 22}, {key: 1, diaVolta: 23}, {key: 1, diaVolta: 24}, {key: 1, diaVolta: 25}, {key: 1, diaVolta: 26}, {key: 1, diaVolta: 27}, {key: 1, diaVolta: 28}, {key: 1, diaVolta: 29}, {key: 1, diaVolta: 30}, {key: 1, diaVolta: 31}
         ],
         input: '',
+        nota: 5,
+        faixaPreco: 500,
       };
       this.entradaNome = this.entradaNome.bind(this);
       this.entradaCpf = this.entradaCpf.bind(this)
@@ -165,43 +128,132 @@ class Entrar extends Component {
             <Text style={{fontSize: 18, marginTop:25, fontWeight: 'bold'}}>Escolha seu destino:</Text>
               <Picker
                   style={estilos.resultadoContainerFundo}
-                  selectedValue = {this.state.local}
-                  onValueChange = {(itemValue, itemIndex) => this.setState({local: itemValue})}>
+                  selectedValue={this.state.local}
+                  onValueChange={(itemValue, itemIndex) => this.setState({local: itemValue})}>
                   {locaisItem}
               </Picker>
+
             <Text style={{fontSize: 18, marginTop:25, fontWeight: 'bold'}}>Escolha dia de ida:</Text>
               <Picker
                 style={estilos.resultadoContainerFundo}
-                selectedValue = {this.state.dataIda}
-                  onValueChange = {(itemValue, itemIndex) => this.setState({diaIda: itemValue})}>
+                selectedValue={this.state.dataIda}
+                onValueChange={(itemValue, itemIndex) => this.setState({diaIda: itemValue})}>
                   {dataIda}
               </Picker>
             <Text style={{fontSize: 18, marginTop:25, fontWeight: 'bold'}}>Escolha dia de volta:</Text>
               <Picker
                 style={estilos.resultadoContainerFundo}
-                selectedValue = {this.state.dataVolta}
-                  onValueChange = {(itemValue, itemIndex) => this.setState({diaVolta: itemValue})}>
+                selectedValue={this.state.dataVolta}
+                onValueChange={(itemValue, itemIndex) => this.setState({diaVolta: itemValue})}>
                   {dataVolta}
               </Picker>
 
-              <Switch
-                value={this.state.status}
-                onValueChange={(valorSwitch) => this.setState({status: valorSwitch})}
-                thumbColor="#87CEFA"
-              ></Switch>
-              <Switch
-                value={this.state.status2}
-                onValueChange={(valorSwitch2) => this.setState({status2: valorSwitch2})}
-                thumbColor="#87CEFA"
-              ></Switch>
+              <Text style={{ fontSize: 18, marginTop: 25, fontWeight: 'bold' }}>Escolha sua avaliação para o destino:</Text>
+              <Slider
+              style={{ width: 300, height: 40 }}
+              minimumValue={0}
+                maximumValue={10}
+                step={1}
+                value={this.state.nota}
+                onValueChange={(value) => this.setState({ nota: value })}
+                minimumTrackTintColor="#87CEFA"
+                maximumTrackTintColor="#f0f0f0"
+                thumbTintColor="#87CEFA"
+              />
+              <Text style={{fontSize: 20}}>Nota: {this.state.nota}</Text>
 
-              <Button
-                onPress={() => this.props.navigation.navigate('Início')}
-                title='Conheça nosso app'
-                style={estilos.botao}
-              /> 
+              <TouchableOpacity
+                onPress={() => alert(`Você avaliou o destino com nota: ${this.state.nota}`)}
+                style={{
+                  backgroundColor: '#87CEFA',
+                  padding: 15,
+                  borderRadius: 5,
+                  marginTop: 30,
+                }}
+                >
+                <Text style={{ fontSize: 15, fontWeight: 'bold', textAlign: 'center' }}>Enviar Avaliação</Text>
+              </TouchableOpacity>
+
+            <Text style={{ fontSize: 18, marginTop: 25, fontWeight: 'bold' }}>Escolha a faixa de preço:</Text>
+            <Slider
+              style={{ width: 300, height: 40 }}
+              minimumValue={100}
+              maximumValue={8000}
+              step={100}
+              value={this.state.faixaPreco}
+              onValueChange={(value) => this.setState({ faixaPreco: value })}
+              minimumTrackTintColor="#87CEFA"
+              maximumTrackTintColor="#f0f0f0"
+              thumbTintColor="#87CEFA"
+            />
+            <Text style={{fontSize: 20}}>{`R$ ${this.state.faixaPreco.toFixed(2)}`}</Text>
+
+            <TouchableOpacity
+              onPress={() => alert('Selecionou a faixa de preço!')}
+              style={{
+                backgroundColor: '#87CEFA',
+                padding: 15,
+                borderRadius: 5,
+                marginTop: 30,
+              }}
+            >
+              <Text style={{ fontSize: 15, fontWeight: 'bold', textAlign: 'center' }}>Confirmar Faixa de Preço</Text>
+            </TouchableOpacity>
+
+            <Text style={{marginTop: 20, fontWeight: 'bold', fontSize: 18, marginBottom: 10,}}>{this.state.notificacao ? 'Notificações Ativadas' : 'Notificações Desativadas'}</Text>
+            <Switch
+              value={this.state.notificacao}
+              onValueChange={(value) => this.setState({ notificacao: value })}
+              thumbColor="#87CEFA"
+            />
+            <Text style={{marginTop: 20, fontWeight: 'bold', fontSize: 18, marginBottom: 10,}}> {this.state.mensagem ? 'Receber Mensagens' : 'Não Receber Mensagens'}</Text>
+            <Switch
+              value={this.state.mensagem}
+              onValueChange={(value) => this.setState({ mensagem: value })}
+              thumbColor="#87CEFA"
+            />
+
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate('Imagens')}
+              style={estilos.botao}
+            >
+              <Text style={{fontSize: 15, fontWeight: 'bold', textAlign: 'center'}}>Paisagens do Brasil para você conhecer</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate('Início')}
+              style={estilos.botao}
+            >
+              <Text style={{fontSize: 15, fontWeight: 'bold', textAlign: 'center'}}>Conheça nosso App!</Text>
+            </TouchableOpacity>
           </View>
         </ScrollView>
+      </View>
+    );
+  }
+}
+
+class ImagensEntrada extends Component {
+  render(){
+    let img1 = 'https://s2-g1.glbimg.com/rl8QsJdK8HiGl6KpjeP6MhuERpI=/0x0:2000x1333/1008x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2019/v/D/HQZ60oQdmfN5Pmbgi4eg/pantanal-dsc1432-eduardo-palacio-g1.jpg'
+    let img2 = 'https://nascenteazul.com.br/wp-content/uploads/2021/07/paisagem-aerea-bonito-ms.png'
+    let img3 = 'https://s2-casavogue.glbimg.com/hVxJWLesXtJGAWa0YyX-8bfsf9k=/0x0:2000x1500/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_d72fd4bf0af74c0c89d27a5a226dbbf8/internal_photos/bs/2023/d/T/K3e8cASAycnfqAYkxvKA/03-as-paisagens-naturais-mais-lindas-do-brasil-chapada-dos-veadeiros2-min.jpg'
+    let img4 = 'https://viagemeturismo.abril.com.br/wp-content/uploads/2016/10/01407947_8c7f5c3c6h.jpeg?quality=70&strip=info&w=925&w=636'
+    let img5 = 'https://nascenteazul.com.br/wp-content/uploads/2021/07/fernando-de-noronha-paisagens-naturais-de-praia-1.png'
+    let img6 = 'https://viagemeturismo.abril.com.br/wp-content/uploads/2016/10/pampas-gauchos.jpeg?quality=70&strip=info&w=920&w=636'
+    let img7 = 'https://s2-casavogue.glbimg.com/qbK-sF1r6N2hm8rUiQhRg9w4kfQ=/0x0:2113x1419/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_d72fd4bf0af74c0c89d27a5a226dbbf8/internal_photos/bs/2023/Y/O/ccc6EFS4a382ISDKgpjg/01-as-paisagens-naturais-mais-lindas-do-brasil-floresta-amazonica2-min.jpg'
+    let img8 = 'https://s2-casavogue.glbimg.com/pGduDbiKGCTguNBLTf-ua5lktFA=/0x0:2121x1414/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_d72fd4bf0af74c0c89d27a5a226dbbf8/internal_photos/bs/2023/R/y/EoOHxaQ62cwUyG1EyD9g/06-as-paisagens-naturais-mais-lindas-do-brasil-fernando-de-noronha2-min.jpg'
+
+    return(
+      <View style={{display: 'flex', justifyContent: 'center', alignItems: 'center',flexDirection: 'row',flexWrap: 'wrap', marginTop: 20,}}>
+        <Image source={{uri: img1}} style={{  width: '20%', height: 600, marginBottom: 20, marginHorizontal: 100, borderRadius: 8, marginTop: 100}} />
+        <Image source={{uri: img2}} style={{  width: '20%', height: 600, marginBottom: 20, marginHorizontal: 100, borderRadius: 8, marginTop: 100}} />
+        <Image source={{uri: img3}} style={{  width: '20%', height: 600, marginBottom: 20, marginHorizontal: 100, borderRadius: 8, marginTop: 100}}/>
+        <Image source={{uri: img4}} style={{  width: '20%', height: 600, marginBottom: 20, marginHorizontal: 100, borderRadius: 8, marginTop: 100}} />
+        <Image source={{uri: img5}} style={{  width: '20%', height: 600, marginBottom: 20, marginHorizontal: 100, borderRadius: 8, marginTop: 100}} />
+        <Image source={{uri: img6}} style={{  width: '20%', height: 600, marginBottom: 20, marginHorizontal: 100, borderRadius: 8, marginTop: 100}} />
+        <Image source={{uri: img7}} style={{  width: '20%', height: 600, marginBottom: 20, marginHorizontal: 100, borderRadius: 8, marginTop: 100}} />
+        <Image source={{uri: img8}} style={{  width: '20%', height: 600, marginBottom: 20, marginHorizontal: 100, borderRadius: 8, marginTop: 100}} />
       </View>
     );
   }
@@ -357,6 +409,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: true }}>
         <Stack.Screen name="Bem-vindo" component={Entrar} />
+        <Stack.Screen name="Imagens" component={ImagensEntrada} />
         <Stack.Screen name="Início" component={Inicio} />
         <Stack.Screen name="Detalhes" component={LugarDetalhes} />
       </Stack.Navigator>
@@ -428,6 +481,14 @@ const estilos = StyleSheet.create({
     borderRadius: 5,
     backgroundColor: '#f0f0f0',
   },
+  botao: {
+    padding: 10,
+    marginTop: 10,
+    fontSize: 15,
+    backgroundColor: "#87CEFA",
+    fontWeight: 'bold',
+    borderRadius: 10
+  },
   resultadoContainerFundo: {
     marginTop: 20,
     padding: 15,
@@ -442,5 +503,5 @@ const estilos = StyleSheet.create({
     flex: 1,
     padding: 20,
     backgroundColor: '#f0f0f0',
-  },
+  }
 });

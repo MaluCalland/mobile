@@ -234,7 +234,7 @@ class Entrar extends Component {
 }
 
 class ImagensEntrada extends Component {
-  render(){
+  render() {
     let img1 = 'https://s2-g1.glbimg.com/rl8QsJdK8HiGl6KpjeP6MhuERpI=/0x0:2000x1333/1008x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2019/v/D/HQZ60oQdmfN5Pmbgi4eg/pantanal-dsc1432-eduardo-palacio-g1.jpg'
     let img2 = 'https://nascenteazul.com.br/wp-content/uploads/2021/07/paisagem-aerea-bonito-ms.png'
     let img3 = 'https://s2-casavogue.glbimg.com/hVxJWLesXtJGAWa0YyX-8bfsf9k=/0x0:2000x1500/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_d72fd4bf0af74c0c89d27a5a226dbbf8/internal_photos/bs/2023/d/T/K3e8cASAycnfqAYkxvKA/03-as-paisagens-naturais-mais-lindas-do-brasil-chapada-dos-veadeiros2-min.jpg'
@@ -245,19 +245,20 @@ class ImagensEntrada extends Component {
     let img8 = 'https://s2-casavogue.glbimg.com/pGduDbiKGCTguNBLTf-ua5lktFA=/0x0:2121x1414/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_d72fd4bf0af74c0c89d27a5a226dbbf8/internal_photos/bs/2023/R/y/EoOHxaQ62cwUyG1EyD9g/06-as-paisagens-naturais-mais-lindas-do-brasil-fernando-de-noronha2-min.jpg'
 
     return(
-      <View style={{display: 'flex', justifyContent: 'center', alignItems: 'center',flexDirection: 'row',flexWrap: 'wrap', marginTop: 20,}}>
-        <Image source={{uri: img1}} style={{  width: '20%', height: 600, marginBottom: 20, marginHorizontal: 100, borderRadius: 8, marginTop: 100}} />
-        <Image source={{uri: img2}} style={{  width: '20%', height: 600, marginBottom: 20, marginHorizontal: 100, borderRadius: 8, marginTop: 100}} />
-        <Image source={{uri: img3}} style={{  width: '20%', height: 600, marginBottom: 20, marginHorizontal: 100, borderRadius: 8, marginTop: 100}}/>
-        <Image source={{uri: img4}} style={{  width: '20%', height: 600, marginBottom: 20, marginHorizontal: 100, borderRadius: 8, marginTop: 100}} />
-        <Image source={{uri: img5}} style={{  width: '20%', height: 600, marginBottom: 20, marginHorizontal: 100, borderRadius: 8, marginTop: 100}} />
-        <Image source={{uri: img6}} style={{  width: '20%', height: 600, marginBottom: 20, marginHorizontal: 100, borderRadius: 8, marginTop: 100}} />
-        <Image source={{uri: img7}} style={{  width: '20%', height: 600, marginBottom: 20, marginHorizontal: 100, borderRadius: 8, marginTop: 100}} />
-        <Image source={{uri: img8}} style={{  width: '20%', height: 600, marginBottom: 20, marginHorizontal: 100, borderRadius: 8, marginTop: 100}} />
+      <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'row', flexWrap: 'wrap', marginTop: 20 }}>
+        <Image source={{uri: img1}} style={{width: '45%', height: 150, marginBottom: 20, borderRadius: 8, marginHorizontal: 10 }} />
+        <Image source={{uri: img2}} style={{ width: '45%', height: 150, marginBottom: 20, borderRadius: 8, marginHorizontal: 10 }} />
+        <Image source={{uri: img3}} style={{ width: '45%', height: 150, marginBottom: 20, borderRadius: 8, marginHorizontal: 10 }} />
+        <Image source={{uri: img4}} style={{ width: '45%', height: 150, marginBottom: 20, borderRadius: 8, marginHorizontal: 10 }} />
+        <Image source={{uri: img5}} style={{ width: '45%', height: 150, marginBottom: 20, borderRadius: 8, marginHorizontal: 10 }} />
+        <Image source={{uri: img6}} style={{ width: '45%', height: 150, marginBottom: 20, borderRadius: 8, marginHorizontal: 10 }} />
+        <Image source={{uri: img7}} style={{ width: '45%', height: 150, marginBottom: 20, borderRadius: 8, marginHorizontal: 10 }} />
+        <Image source={{uri: img8}} style={{ width: '45%', height: 150, marginBottom: 20, borderRadius: 8, marginHorizontal: 10 }} />
       </View>
     );
   }
 }
+
 
 const lugares = [
   {
